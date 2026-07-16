@@ -1,0 +1,139 @@
+/* ============================================================
+   Editorial-Luxury Design Tokens
+   Mirrors the Figma Variables in the Wardrobe design system.
+   Palette: ivory · charcoal · warm taupe · antique brass
+   Type: Fraunces (display) + Inter (UI)
+   ============================================================ */
+
+:root {
+  /* ---- Primitives ---- */
+  --ivory-50: #fcfaf6;
+  --ivory-100: #f7f3ec;
+  --ivory-200: #efe9de;
+  --ivory-300: #e4dbcb;
+  --taupe-100: #d8cfc0;
+  --taupe-200: #c2b5a1;
+  --taupe-300: #a8987f;
+  --taupe-400: #897a62;
+  --taupe-500: #6e614c;
+  --charcoal-100: #6b6760;
+  --charcoal-300: #46423c;
+  --charcoal-500: #302e2a;
+  --charcoal-700: #1f1e1b;
+  --charcoal-900: #121110;
+  --brass-300: #c2a271;
+  --brass-400: #a8854e;
+  --brass-500: #8a6c3c;
+  --white: #ffffff;
+
+  /* ---- Semantic color ---- */
+  --color-bg-canvas: var(--ivory-100);
+  --color-bg-surface: var(--white);
+  --color-bg-elevated: var(--ivory-50);
+  --color-bg-inverse: var(--charcoal-900);
+  --color-bg-subtle: var(--ivory-200);
+  --color-text-primary: var(--charcoal-900);
+  --color-text-secondary: var(--taupe-500);
+  --color-text-muted: var(--taupe-400);
+  --color-text-inverse: var(--ivory-50);
+  --color-text-accent: var(--brass-500);
+  --color-border-subtle: var(--ivory-300);
+  --color-border-default: var(--taupe-100);
+  --color-border-strong: var(--taupe-300);
+  --color-accent-brass: var(--brass-400);
+  --color-accent-on-brass: var(--ivory-50);
+
+  /* ---- Spacing (8pt base) ---- */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+
+  /* ---- Radius ---- */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+  --radius-full: 999px;
+
+  /* ---- Elevation (soft, low) ---- */
+  --elevation-card: 0 2px 8px rgba(31, 26, 18, 0.06);
+  --elevation-raised: 0 8px 24px -4px rgba(31, 26, 18, 0.10);
+  --elevation-overlay: 0 16px 48px -8px rgba(31, 26, 18, 0.16);
+
+  /* ---- Type families ---- */
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --font-ui: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ============================================================
+   Type ramp utility classes — mirror Figma text styles
+   ============================================================ */
+.t-display-xl {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: -0.02em;
+}
+.t-display-l {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  letter-spacing: -0.015em;
+}
+.t-title-l {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 34px;
+  letter-spacing: -0.01em;
+}
+.t-title-m {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: -0.005em;
+}
+.t-body-l {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 26px;
+}
+.t-body-m {
+  font-family: var(--font-ui);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+}
+.t-body-m-medium {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+}
+.t-caption {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.002em;
+}
+.t-overline {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}

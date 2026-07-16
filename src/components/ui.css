@@ -1,0 +1,118 @@
+/* ---- Button ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: 14px 28px;
+  border-radius: var(--radius-full);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn--primary {
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+}
+.btn--secondary {
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border-strong);
+}
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text-primary);
+}
+.btn--full {
+  width: 100%;
+}
+
+/* ---- Chip / facet ---- */
+.chip {
+  padding: 9px 16px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-ui);
+  color: var(--color-text-secondary);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border-default);
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.chip--active {
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  border-color: var(--color-bg-inverse);
+}
+
+.overline-muted {
+  color: var(--color-text-muted);
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+.section-header__action {
+  color: var(--color-text-accent);
+  font-weight: 500;
+}
+
+/* ---- ItemCard ---- */
+.item-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: var(--color-bg-surface);
+  text-align: left;
+  width: 100%;
+}
+.item-card__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-bg-subtle);
+}
+.item-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.item-card__fav {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-primary);
+}
+.item-card__fav--on {
+  color: #a8854e;
+}
+.item-card__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 0 2px var(--space-xs);
+}
+.item-card__name {
+  color: var(--color-text-primary);
+}
+.item-card__detail {
+  color: var(--color-text-secondary);
+}

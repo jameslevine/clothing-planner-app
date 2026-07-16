@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atelier · Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ivory-50:#fcfaf6; --ivory-100:#f7f3ec; --ivory-200:#efe9de; --ivory-300:#e4dbcb;
+    --taupe-100:#d8cfc0; --taupe-200:#c2b5a1; --taupe-300:#a8987f; --taupe-400:#897a62; --taupe-500:#6e614c;
+    --charcoal-300:#46423c; --charcoal-500:#302e2a; --charcoal-700:#1f1e1b; --charcoal-900:#121110;
+    --brass-300:#c2a271; --brass-400:#a8854e; --brass-500:#8a6c3c; --white:#fff;
+    --bg:#f7f3ec; --surface:#fff; --ink:#121110; --ink-2:#6e614c; --ink-3:#897a62;
+    --line:#e4dbcb; --accent:#a8854e;
+    --serif:"Fraunces",Georgia,serif; --sans:"Inter",-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:var(--sans);color:var(--ink);background:var(--taupe-100);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .page{
+    width:210mm;height:297mm;overflow:hidden;margin:24px auto;background:var(--bg);
+    padding:14mm 20mm;box-shadow:0 10px 40px rgba(0,0,0,.18);position:relative;
+    display:flex;flex-direction:column;
+  }
+  .page__content{flex:1;min-height:0;}
+  .page--dark{background:var(--charcoal-900);color:var(--ivory-100);}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;}
+  .overline{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);}
+  .muted{color:var(--ink-2);}
+  p{margin:.5em 0;color:var(--charcoal-300);}
+  .page--dark p{color:rgba(247,243,236,.8);}
+  a{color:var(--accent);text-decoration:none;}
+
+  /* cover */
+  .cover{display:flex;flex-direction:column;justify-content:space-between;min-height:245mm;}
+  .cover h1{font-size:62px;font-weight:300;line-height:1.02;letter-spacing:-.025em;color:var(--ivory-50);margin:14px 0 18px;}
+  .cover .lede{font-size:17px;max-width:78%;}
+  .cover__meta{display:flex;gap:48px;border-top:1px solid rgba(247,243,236,.18);padding-top:22px;margin-top:30px;}
+  .cover__meta div span{display:block;}
+  .cover__meta .k{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-300);margin-bottom:4px;}
+  .cover__meta .v{font-size:15px;color:var(--ivory-100);}
+  .wordmark{font-family:var(--serif);font-size:22px;color:var(--ivory-50);}
+  .wordmark b{color:var(--brass-300);font-weight:400;}
+
+  section{margin-bottom:16px;}
+  h2.section{font-size:28px;margin:2px 0 10px;}
+  h3{font-size:19px;margin:14px 0 6px;}
+  .rule{height:1px;background:var(--line);border:0;margin:18px 0;}
+  ul{margin:.4em 0 .8em 1.1em;}
+  li{margin:.2em 0;color:var(--charcoal-300);}
+  .lead{font-size:16px;color:var(--charcoal-500);}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .card h4{font-size:17px;margin-bottom:6px;}
+  .pill{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--ivory-200);color:var(--ink-2);}
+  .tierdiv{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:9px 0 3px;padding-top:7px;border-top:1px solid var(--line);}
+  .tierdiv:first-of-type{border-top:0;padding-top:0;margin-top:6px;}
+
+  /* pricing */
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch;}
+  .tier{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px 18px;display:flex;flex-direction:column;}
+  .tier--feature{background:var(--charcoal-900);color:var(--ivory-100);border-color:var(--charcoal-900);box-shadow:0 12px 30px rgba(18,17,16,.22);}
+  .tier__name{font-family:var(--serif);font-size:22px;margin-bottom:2px;}
+  .tier--feature .tier__name{color:var(--ivory-50);}
+  .tier__price{font-family:var(--serif);font-size:38px;font-weight:300;margin:8px 0 2px;}
+  .tier__tag{font-size:12px;color:var(--ink-3);margin-bottom:14px;min-height:32px;}
+  .tier--feature .tier__tag{color:var(--brass-300);}
+  .tier ul{list-style:none;margin:0;padding:0;flex:1;}
+  .tier li{font-size:12.5px;padding:5.5px 0 5.5px 18px;border-top:1px solid var(--line);position:relative;color:var(--charcoal-300);line-height:1.4;}
+  .tier--feature li{border-color:rgba(247,243,236,.12);color:rgba(247,243,236,.82);}
+  .tier li .ch{position:absolute;left:0;top:5.5px;color:var(--accent);font-weight:700;}
+  .tier--feature li .ch{color:var(--brass-300);}
+  .tier__badge{position:absolute;}
+  .ribbon{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--brass-400);color:#fff;padding:4px 10px;border-radius:999px;margin-bottom:10px;width:fit-content;}
+
+  table{width:100%;border-collapse:collapse;font-size:13.5px;}
+  th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+  th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);font-weight:600;}
+  td.num{font-family:var(--serif);font-size:16px;white-space:nowrap;}
+  tr.total td{border-top:2px solid var(--charcoal-900);font-weight:600;color:var(--ink);}
+  table.tight th,table.tight td{padding:6px 12px;font-size:12.5px;}
+  table.mini td{padding:2.5px 0;border-bottom:1px solid var(--line);font-size:12px;}
+  table.mini tr.total td{border-top:1.5px solid var(--charcoal-900);border-bottom:0;padding-top:4px;}
+
+  /* timeline */
+  .timeline{position:relative;margin:10px 0 0 0;}
+  .tl-item{display:grid;grid-template-columns:120px 1fr;gap:18px;padding:7px 0;border-bottom:1px solid var(--line);font-size:12.5px;}
+  .tl-when{font-family:var(--serif);font-size:15px;color:var(--accent);}
+  .tl-what b{display:block;margin-bottom:2px;}
+
+  /* screenshots */
+  .shots{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:start;}
+  .shots img{width:100%;border-radius:10px;border:1px solid var(--line);background:#fff;}
+  .shots--admin{grid-template-columns:1fr 1fr;}
+  .shots--admin img{box-shadow:0 6px 18px rgba(18,17,16,.1);}
+  .cap{font-size:11px;color:var(--ink-3);margin-top:6px;text-align:center;}
+  .gcap{margin-top:7px;}
+  .gcap b{display:block;font-size:12.5px;color:var(--ink);margin-bottom:1px;}
+  .gcap span{font-size:11px;color:var(--ink-3);line-height:1.35;display:block;}
+
+  .callout{background:var(--ivory-200);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;padding:13px 16px;margin:12px 0;font-size:13.5px;}
+  .callout strong{color:var(--ink);}
+  .two-col{column-count:2;column-gap:28px;}
+  .foot{flex:0 0 auto;display:flex;justify-content:space-between;font-size:10px;color:var(--ink-3);letter-spacing:.04em;border-top:1px solid var(--line);padding-top:8px;margin-top:10px;}
+  .page--dark .foot{color:rgba(247,243,236,.5);border-color:rgba(247,243,236,.15);}
+  .kpi{display:flex;gap:10px;align-items:baseline;}
+  .kpi b{font-family:var(--serif);font-size:20px;font-weight:400;}
+  .bio{display:flex;gap:16px;align-items:flex-start;background:var(--ivory-200);border-radius:12px;padding:14px 16px;}
+  .bio__avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:0 0 auto;border:2px solid var(--surface);box-shadow:0 2px 8px rgba(18,17,16,.12);}
+  .bio__name{font-family:var(--serif);font-size:18px;margin-bottom:1px;}
+  .bio__role{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+  .bio p{font-size:12px;line-height:1.45;margin:0;color:var(--charcoal-300);}
+
+  @media print{
+    body{background:#fff;}
+    .page{margin:0;box-shadow:none;width:210mm;height:297mm;page-break-after:always;break-after:page;overflow:hidden;}
+    .page:last-child{page-break-after:auto;break-after:auto;}
+    @page{size:A4;margin:0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="page page--dark cover">
+  <div>
+    <div class="wordmark">Atelier<b>.</b></div>
+  </div>
+  <div>
+    <div class="overline">Private Proposal · Confidential</div>
+    <h1>A private wardrobe,<br/>considered in full.</h1>
+    <p class="lede">A bespoke iPhone application and staff studio for the curation, planning and care of a personal wardrobe, designed with discretion, built to the highest standard, and ready for move-in this September.</p>
+    <div class="cover__meta">
+      <div><span class="k">Prepared for</span><span class="v">Confidential</span></div>
+      <div><span class="k">Prepared by</span><span class="v">James Levine Digital</span></div>
+      <div><span class="k">Date</span><span class="v">June 2026</span></div>
+      <div><span class="k">Valid for</span><span class="v">30 days</span></div>
+    </div>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 1</span></div>
+</div>
+
+<!-- OVERVIEW + LOOK & FEEL -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Overview</div>
+    <h2 class="section">The opportunity</h2>
+    <p class="lead">We propose to design and build a private, two-part product: an elegant <strong>iPhone application</strong> for you, and a secure <strong>web studio</strong> for your wardrobe staff. Together they turn a large personal collection into something effortless to search, plan, wear and care for, with privacy and discretion built into every layer.</p>
+  </section>
+
+  <section>
+    <div class="overline">Look &amp; Feel</div>
+    <h3 style="margin-top:6px">The client application · iPhone</h3>
+    <p class="muted" style="font-size:13.5px;margin-bottom:14px">Editorial, calm and tactile. Designed to feel like a private atelier in the palm of your hand. A few representative screens:</p>
+    <div class="shots" style="grid-template-columns:repeat(6,1fr);gap:10px">
+      <div><img src="img/client-today.png" alt="Today screen"/><div class="gcap"><b>Today</b><span>The day's weather, a suggested look and quick links to plan.</span></div></div>
+      <div><img src="img/client-search.png" alt="Wardrobe search"/><div class="gcap"><b>Search</b><span>Browse with filters by category, colour, brand and fabric.</span></div></div>
+      <div><img src="img/client-builder.png" alt="Outfit builder"/><div class="gcap"><b>Builder</b><span>Tap any zone on the figure to add a piece from that category.</span></div></div>
+      <div><img src="img/client-item.png" alt="Item detail"/><div class="gcap"><b>Item</b><span>Full imagery, brand &amp; colour, with the option to start a look.</span></div></div>
+      <div><img src="img/client-planner.png" alt="Planner"/><div class="gcap"><b>Planner</b><span>Plan by morning, afternoon or evening; review what was worn.</span></div></div>
+      <div><img src="img/client-insights.png" alt="Insights"/><div class="gcap"><b>Insights</b><span>Most- and least-worn pieces and overall wardrobe usage.</span></div></div>
+    </div>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 2</span></div>
+</div>
+
+<!-- STAFF STUDIO SCREENS -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Look &amp; Feel</div>
+    <h2 class="section">The staff studio · web</h2>
+    <p class="lead" style="margin-bottom:14px">A focused dashboard for your team to upload, tag, plan, prepare and track, never seen by anyone outside your household. A few representative screens:</p>
+    <div class="shots shots--admin">
+      <div><img src="img/admin-upload.png" alt="Upload and tag"/><div class="gcap"><b>Upload &amp; tag</b><span>Bulk-upload photos; each is enriched and queued as a draft for staff to review and approve.</span></div></div>
+      <div><img src="img/admin-wardrobe.png" alt="Wardrobe management"/><div class="gcap"><b>Wardrobe</b><span>The full digital wardrobe: every item with imagery, category and care data, searchable and filterable.</span></div></div>
+    </div>
+    <div class="shots shots--admin" style="margin-top:16px">
+      <div><img src="img/admin-calendar.png" alt="Outfit planner"/><div class="gcap"><b>Outfit planner</b><span>Assign outfits to dates across month and day views; click any day to see the planned look.</span></div></div>
+      <div><img src="img/admin-qr.png" alt="Hanger scan"/><div class="gcap"><b>Hanger scan</b><span>Scan a hanger's QR code to confirm its contents and pull up care &amp; composition from the label.</span></div></div>
+    </div>
+  </section>
+  <div class="callout" style="margin-top:14px">
+    <strong>A feel, not the full set.</strong> These screens are a representative sample to convey the look and feel of the application; they are not every page. The complete app includes further screens such as voice styling, sharing &amp; voting, staff management, the activity dashboard and more.
+  </div>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 3</span></div>
+</div>
+
+<!-- SCOPE OF WORKS -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Scope of Works</div>
+    <h2 class="section">What we will build</h2>
+    <div class="grid-2" style="font-size:13px">
+      <div class="card">
+        <span class="pill">Client iPhone app</span>
+        <h4 style="margin-top:8px">For the wardrobe owner</h4>
+        <div class="tierdiv">Essential</div>
+        <ul>
+          <li>Daily “Today” view with weather-aware suggestions</li>
+          <li>Farfetch-style wardrobe search &amp; rich filtering</li>
+          <li>Interactive outfit builder on a styling figure</li>
+          <li>Planner &amp; calendar: plan by morning / afternoon / evening</li>
+          <li>Outfit history: review what was worn and when</li>
+          <li>Insights: most &amp; least worn, wardrobe usage</li>
+        </ul>
+        <div class="tierdiv">Signature</div>
+        <ul>
+          <li>Share looks (WhatsApp, Messages, email) &amp; collect votes</li>
+          <li>Guided first-run tutorial for new users</li>
+          <li>Profile, preferences &amp; offline-first sync</li>
+        </ul>
+        <div class="tierdiv">Couture · AI</div>
+        <ul>
+          <li>Shuffle &amp; generate looks by occasion or colour theme</li>
+          <li>“Style 3 looks around this piece” from any item</li>
+          <li>Recommendations from what is worn &amp; loved</li>
+          <li>Voice / conversational styling assistant</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="pill">Staff web studio</span>
+        <h4 style="margin-top:8px">For the wardrobe team</h4>
+        <div class="tierdiv">Essential</div>
+        <ul>
+          <li>Secure sign-in; role-based access (super-admin, stylist, assistant)</li>
+          <li>Bulk photo upload &amp; draft review; single-photo capture</li>
+          <li>Wardrobe management &amp; item detail with care data</li>
+          <li>Outfit planner: month &amp; day calendar views</li>
+          <li>QR hanger scanning to confirm contents &amp; care</li>
+          <li>Staff management &amp; profile administration</li>
+          <li>Activity dashboard: trace wardrobe &amp; staff activity over time</li>
+        </ul>
+        <div class="tierdiv">Signature</div>
+        <ul>
+          <li>In-app guided tutorial for onboarding new staff</li>
+        </ul>
+        <div class="tierdiv">Couture · AI</div>
+        <ul>
+          <li>Automatic AI enrichment of uploads (type, colour, fabric, brand)</li>
+          <li>Clothing-label scanning: care, composition, origin, size</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="overline">Intelligent features · Couture</div>
+    <h3 style="margin-top:6px">Smart by design</h3>
+    <p>On the Couture tier, photos are analysed automatically to extract type, colour, fabric, brand and pattern; clothing labels are read to capture care and composition. A recommendation engine learns from what is worn and loved, and the conversational assistant lets you style by simply speaking, powered by leading vision and language models, integrated securely. On Essential and Signature, staff tag items by hand and the same wardrobe, planning and collaboration features apply.</p>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 4</span></div>
+</div>
+
+<!-- PRICING -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Investment</div>
+    <h2 class="section">Three tiers</h2>
+    <p class="lead" style="margin-bottom:16px">Fixed project price for design &amp; build. Every tier includes bespoke design &amp; branding and delivers both the iPhone app and the staff studio. They differ in breadth of features, the intelligent (AI) capabilities, and how much flexibility you have to change direction late in the build.</p>
+    <div class="tiers">
+      <!-- Essential -->
+      <div class="tier">
+        <div class="tier__name">Essential</div>
+        <div class="tier__price">£60k</div>
+        <div class="tier__tag">The core wardrobe, beautifully designed.</div>
+        <ul>
+          <li><span class="ch">✓</span> Bespoke <strong>design &amp; branding</strong> (M2)</li>
+          <li><span class="ch">✓</span> iPhone app + staff studio, secure sign-in &amp; roles</li>
+          <li><span class="ch">✓</span> Wardrobe upload, management &amp; QR hangers (M3)</li>
+          <li><span class="ch">✓</span> Search &amp; rich filtering</li>
+          <li><span class="ch">✓</span> Outfit builder on the styling figure (M4)</li>
+          <li><span class="ch">✓</span> Planner, calendar, history &amp; usage insights (M5)</li>
+          <li><span class="ch">✓</span> <strong>2 revision rounds</strong> per milestone</li>
+        </ul>
+      </div>
+      <!-- Signature -->
+      <div class="tier">
+        <div class="tier__name">Signature</div>
+        <div class="tier__price">£70k</div>
+        <div class="tier__tag">More polish, collaboration and room to refine.</div>
+        <ul>
+          <li><span class="ch">✓</span> Everything in Essential, plus:</li>
+          <li><span class="ch">✓</span> Sharing &amp; collaborative voting (M6)</li>
+          <li><span class="ch">✓</span> Offline-first sync</li>
+          <li><span class="ch">✓</span> In-app guided tutorials &amp; onboarding</li>
+          <li><span class="ch">✓</span> Profile &amp; preferences</li>
+          <li><span class="ch">✓</span> <strong>5 revision rounds</strong> per milestone</li>
+          <li><span class="ch">✓</span> One mid-project scope swap &amp; priority support</li>
+        </ul>
+      </div>
+      <!-- Couture -->
+      <div class="tier tier--feature">
+        <div class="ribbon">Recommended</div>
+        <div class="tier__name">Couture</div>
+        <div class="tier__price">£80k</div>
+        <div class="tier__tag">All the intelligence, with total flexibility.</div>
+        <ul>
+          <li><span class="ch">✓</span> Everything in Signature, plus <strong>all AI features</strong>:</li>
+          <li><span class="ch">✓</span> AI photo tagging &amp; clothing-label scanning</li>
+          <li><span class="ch">✓</span> Shuffle &amp; theme generation; “style 3 looks around this piece”</li>
+          <li><span class="ch">✓</span> Recommendation engine &amp; voice styling assistant</li>
+          <li><span class="ch">✓</span> <strong>Unlimited revisions</strong>: add or refine features at any point</li>
+          <li><span class="ch">✓</span> Guaranteed <strong>crunch targets &amp; deadlines</strong>; dedicated team</li>
+          <li><span class="ch">✓</span> White-glove onboarding: staff training day &amp; in-app tutorial</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>Where the AI lives.</strong> All intelligent features, automatic photo tagging, label scanning, outfit generation, recommendations and the voice assistant, are part of the <strong>Couture</strong> tier. Essential and Signature deliver the full wardrobe, planning and collaboration experience with staff tagging items by hand. Couture also removes revision limits and commits us to your crunch dates, so late changes never threaten the September move-in.
+    </div>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 5</span></div>
+</div>
+
+<!-- REVISIONS + MAINTENANCE -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Revisions &amp; Change</div>
+    <h2 class="section">How changes work</h2>
+    <div class="grid-3" style="font-size:12.5px">
+      <div class="card" style="padding:13px 15px"><h4 style="font-size:15px">Essential</h4><p style="font-size:12.5px">Two revision rounds per milestone. Further changes are quoted as change-requests and scheduled so they never risk the deadline.</p></div>
+      <div class="card" style="padding:13px 15px"><h4 style="font-size:15px">Signature</h4><p style="font-size:12.5px">Five revision rounds per milestone, plus one larger mid-project scope swap included at no charge.</p></div>
+      <div class="card" style="background:var(--ivory-200);padding:13px 15px"><h4 style="font-size:15px">Couture</h4><p style="font-size:12.5px"><strong>Unlimited revisions</strong> with guaranteed crunch delivery. Change features up to the final moment; we hold the deadline.</p></div>
+    </div>
+    <div class="callout" style="margin-top:10px;margin-bottom:0">
+      <strong>Bugs are always free.</strong> Any defect, at any time on any tier, is fixed at no charge as part of your maintenance plan. You never pay to make something work as intended.
+    </div>
+  </section>
+
+  <section style="margin-bottom:0;margin-top:16px">
+    <div class="overline">After launch</div>
+    <h2 class="section" style="font-size:24px;margin-bottom:8px">Maintenance, hosting &amp; ongoing work</h2>
+    <table class="tight">
+      <thead><tr><th>Item</th><th>What it covers</th><th style="text-align:right">Cost</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Care, Hosting &amp; Maintenance</strong><br/><span class="muted" style="font-size:12px">Monthly, all-inclusive</span></td>
+          <td>Everything to keep the app running, in one fee: EU-region cloud hosting, infrastructure &amp; AI usage, plus unlimited bug fixes, security patches, dependency updates, monitoring, encrypted backups and email/phone support.</td>
+          <td class="num" style="text-align:right">£1,000<span class="muted" style="font-size:12px">/mo</span></td>
+        </tr>
+        <tr>
+          <td><strong>Enhancements</strong><br/><span class="muted" style="font-size:12px">As needed</span></td>
+          <td>Small changes (under a day) at an hourly rate; anything larger is given a fixed project quote, always agreed before we begin.</td>
+          <td class="num" style="text-align:right">£200<span class="muted" style="font-size:12px">/hr</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="card" style="margin-top:12px;padding:12px 16px;font-size:12.5px">
+      <h4 style="font-size:14px">Enhancement retainers</h4>
+      <p class="muted" style="font-size:12px;margin:4px 0 8px">If you expect ongoing changes, a monthly retainer reserves time at the £200/hr rate, with unused hours rolling over one month. No retainer is required; ad-hoc work is simply quoted as it arises. The first <strong>3 months of care &amp; maintenance are free</strong> on the Couture tier.</p>
+      <div class="grid-3" style="font-size:12.5px">
+        <div><span class="num" style="font-size:18px">£400</span><span class="muted" style="font-size:12px">/mo</span><br/><span class="muted" style="font-size:12px">2 hours / month</span></div>
+        <div><span class="num" style="font-size:18px">£1,000</span><span class="muted" style="font-size:12px">/mo</span><br/><span class="muted" style="font-size:12px">5 hours / month</span></div>
+        <div><span class="num" style="font-size:18px">£2,000</span><span class="muted" style="font-size:12px">/mo</span><br/><span class="muted" style="font-size:12px">10 hours / month</span></div>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 6</span></div>
+</div>
+
+<!-- PRIVACY & COMPLIANCE -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Privacy &amp; Compliance</div>
+    <h2 class="section">Your privacy, in plain terms</h2>
+    <p class="lead">This app is built for you alone, and keeping your information private is the starting point, not an afterthought. In short: your data stays in Europe, only people you invite can see it, you can have it all deleted whenever you ask, and the studio can sign a confidentiality agreement. Below is what that means, without the jargon.</p>
+    <div class="grid-2" style="margin-top:16px">
+      <div class="card">
+        <h4>Where your information is kept</h4>
+        <ul>
+          <li>Stored on secure, well-known cloud services based in <strong>Europe</strong> (Ireland &amp; Germany)</li>
+          <li>It never leaves the region you choose, and we can put that in writing</li>
+          <li>Everything is <strong>scrambled (encrypted)</strong> so that even if a file were intercepted, it can't be read</li>
+          <li>Safe backup copies are kept in case of any technical problem</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Who can see it</h4>
+        <ul>
+          <li>Access is <strong>invitation-only</strong>: there is no public sign-up, and strangers cannot find or join</li>
+          <li>Each staff member only sees what their role needs</li>
+          <li>The app keeps a simple record of who did what, and when</li>
+          <li>We can remove anyone's access <strong>instantly</strong> the moment you ask</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>It's your data, and you can delete it</h4>
+        <ul>
+          <li>Everything in the app <strong>belongs to you</strong>; we only ever handle it on your instruction</li>
+          <li>Ask, and we will <strong>permanently delete</strong> any or all of it, or hand you a full copy</li>
+          <li>You decide how long things are kept</li>
+          <li>We follow UK and EU privacy law, with a written agreement to back it up</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Kept confidential</h4>
+        <ul>
+          <li>The studio <strong>can sign</strong> a confidentiality agreement (NDA)</li>
+          <li>We tell you exactly which outside services are involved, and you approve them</li>
+          <li>Access is invitation-only, with every action logged and revocable at any time</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 7</span></div>
+</div>
+
+<!-- TIMELINE -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Timeline</div>
+    <h2 class="section">Delivered for September move-in</h2>
+    <p class="lead" style="margin-bottom:8px">Work is grouped into eight milestones, from a <strong>29 June</strong> kickoff to a fully operational launch on <strong>1 September</strong>. Each milestone has a clear scope and delivery estimate, and ends with a review meeting where we walk through what was built and agree the next step. This programme reflects the full Couture scope; Essential and Signature follow the same milestones with their feature set.</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-when">M1 · 1 wk<br/><span style="font-size:11px;color:var(--ink-3)">29 Jun–3 Jul</span></div><div class="tl-what"><b>Kickoff &amp; discovery</b>A kickoff call with all stakeholders to ensure everyone is aligned, then requirements confirmed, NDA signed, EU infrastructure provisioned and design language agreed. <em>Delivers:</em> aligned stakeholders, signed-off brief &amp; plan.</div></div>
+      <div class="tl-item"><div class="tl-when">M2 · 1 wk<br/><span style="font-size:11px;color:var(--ink-3)">6–10 Jul</span></div><div class="tl-what"><b>Design system &amp; prototype</b>Editorial design language and a clickable prototype of both the iPhone app and staff studio. <em>Delivers:</em> approved designs &amp; navigable prototype.</div></div>
+      <div class="tl-item"><div class="tl-when">M3 · 2 wks<br/><span style="font-size:11px;color:var(--ink-3)">13–24 Jul</span></div><div class="tl-what"><b>Wardrobe foundations</b>Secure sign-in &amp; roles, both app shells, bulk upload with AI photo tagging &amp; label scanning, wardrobe management, search &amp; filtering, QR hangers. <em>Delivers:</em> a searchable digital wardrobe.</div></div>
+      <div class="tl-item"><div class="tl-when">M4 · 1 wk<br/><span style="font-size:11px;color:var(--ink-3)">27–31 Jul</span></div><div class="tl-what"><b>Outfit building</b>Interactive outfit builder on the styling figure, shuffle &amp; theme generation by occasion or colour, “style 3 looks around this piece”. <em>Delivers:</em> outfit creation end-to-end.</div></div>
+      <div class="tl-item"><div class="tl-when">M5 · 1 wk<br/><span style="font-size:11px;color:var(--ink-3)">3–7 Aug</span></div><div class="tl-what"><b>Planning &amp; insights</b>Today/weather view, planner &amp; calendar (month/day, morning/afternoon/evening), outfit history, insights &amp; recommendations, activity dashboard. <em>Delivers:</em> planning &amp; analytics.</div></div>
+      <div class="tl-item"><div class="tl-when">M6 · 2 wks<br/><span style="font-size:11px;color:var(--ink-3)">10–21 Aug</span></div><div class="tl-what"><b>Voice, sharing &amp; sync</b>Conversational styling assistant, sharing &amp; voting, offline-first sync, in-app tutorials, profile &amp; preferences. <em>Delivers:</em> the complete feature set.</div></div>
+      <div class="tl-item"><div class="tl-when">M7 · final wk<br/><span style="font-size:11px;color:var(--ink-3)">24–28 Aug</span></div><div class="tl-what"><b>Wardrobe upload &amp; staff training</b>We help your staff upload your existing photographs and review the AI enrichment, with a dedicated <strong>training day</strong> on the studio. <em>Delivers:</em> populated wardrobe &amp; trained team.</div></div>
+      <div class="tl-item" style="border-bottom:2px solid var(--charcoal-900)"><div class="tl-when" style="color:var(--charcoal-900)">M8 · final wk<br/><span style="font-size:11px;color:var(--ink-3)">28 Aug–1 Sep</span></div><div class="tl-what"><b>Hardening, security &amp; launch</b>Testing, performance &amp; privacy review, then go-live. <em>Delivers:</em> operational launch, ready for daily use.</div></div>
+    </div>
+    <div class="callout" style="margin-top:12px">
+      <strong>Milestone reviews.</strong> Each milestone closes with a review meeting over a pre-agreed channel (a Google Meet link and calendar invite are sent to the agreed group in advance), so progress is visible and the next milestone begins with a shared understanding.
+    </div>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 8</span></div>
+</div>
+
+<!-- PAYMENT + CONTACT -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Payment Terms</div>
+    <h2 class="section">Simple &amp; staged</h2>
+    <table class="tight">
+      <thead><tr><th>Milestone</th><th>Trigger &amp; date</th><th style="text-align:center">Time</th><th style="text-align:right">Share</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Deposit · M1</strong></td><td>Kickoff &amp; discovery: secures the team &amp; start (29 Jun)</td><td style="text-align:center">1 wk</td><td class="num" style="text-align:right">15%</td></tr>
+        <tr><td>M2 · Design &amp; prototype</td><td>Designs &amp; prototype approved (10 Jul)</td><td style="text-align:center">1 wk</td><td class="num" style="text-align:right">10%</td></tr>
+        <tr><td>M3 · Wardrobe foundations</td><td>Searchable digital wardrobe (24 Jul)</td><td style="text-align:center">2 wks</td><td class="num" style="text-align:right">21%</td></tr>
+        <tr><td>M4 · Outfit building</td><td>Outfit creation end-to-end (31 Jul)</td><td style="text-align:center">1 wk</td><td class="num" style="text-align:right">11%</td></tr>
+        <tr><td>M5 · Planning &amp; insights</td><td>Planning &amp; analytics (7 Aug)</td><td style="text-align:center">1 wk</td><td class="num" style="text-align:right">11%</td></tr>
+        <tr><td>M6 · Voice, sharing &amp; sync</td><td>Full feature set delivered (21 Aug)</td><td style="text-align:center">2 wks</td><td class="num" style="text-align:right">21%</td></tr>
+        <tr><td>M7–M8 · Onboarding &amp; launch</td><td>September move-in, accepted (1 Sep)</td><td style="text-align:center">1 wk</td><td class="num" style="text-align:right">11%</td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="font-size:12.5px;margin-top:8px">A 15% deposit secures the start; the remaining 85% is billed against each milestone in proportion to the time it takes. Invoiced at each milestone, payable within 14 days. Care &amp; maintenance billed monthly from launch; enhancement retainers monthly in advance. All figures exclude VAT. Figures are based on the Couture tier (£80k); Essential and Signature follow the same milestone structure at their tier price.</p>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 9</span></div>
+</div>
+
+<!-- SUPPORT, CONTACT + BIO -->
+<div class="page">
+  <div class="page__content">
+  <section>
+    <div class="overline">Support &amp; Contact</div>
+    <h2 class="section">Always reachable</h2>
+    <div class="grid-2" style="font-size:13px">
+      <div class="card">
+        <h4>How to report an issue</h4>
+        <ul>
+          <li>Priority support email, tracked, with response-time guarantees</li>
+          <li>Direct line to your project lead for anything urgent</li>
+          <li>In-app “Report a problem” available to you and your staff</li>
+          <li>Every issue acknowledged, triaged and (if a bug) fixed free of charge</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4>Contact hours &amp; reviews</h4>
+        <ul>
+          <li><strong>Standard hours:</strong> Mon–Fri, 9:00–18:00 (UK)</li>
+          <li><strong>Response:</strong> within 4 working hours; critical issues prioritised same-day</li>
+          <li><strong>Milestone reviews</strong> over a pre-agreed channel (e.g. Google Meet), with invite sent in advance to the agreed group</li>
+          <li>Book a call any time at <strong>cal.com/jameslevine</strong></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="rule" style="margin:12px 0"/>
+    <div class="grid-3">
+      <div><div class="overline">Studio</div><p style="font-size:14px;margin-top:4px">James Levine Digital</p></div>
+      <div><div class="overline">Your contact</div><p style="font-size:14px;margin-top:4px">James Levine<br/>Lead Software Engineer</p></div>
+      <div><div class="overline">Reach us</div><p style="font-size:14px;margin-top:4px">hello@jameslevine.co.uk<br/>+44 7424 927043<br/>Book: cal.com/jameslevine</p></div>
+    </div>
+    <hr class="rule" style="margin:14px 0"/>
+    <div class="overline">About James</div>
+    <div class="bio" style="margin-top:8px">
+      <img class="bio__avatar" src="img/profile.jpg" alt="James Levine"/>
+      <div>
+        <div class="bio__name">James Levine</div>
+        <div class="bio__role">Lead Software Engineer · James Levine Digital</div>
+        <p>A full-stack engineer with over ten years' experience building scalable web, mobile, cloud and AI applications, including for Amazon Web Services and Reach plc, where his work has reached tens of millions of users. He has delivered projects for clients such as Ryanair, Red Bull, Jägermeister, Thomson Reuters, The Economist and the BBC, among many others, and will personally lead the design, build and delivery of your wardrobe application.</p>
+      </div>
+    </div>
+    <p class="muted" style="font-size:11px;margin-top:12px">Confidential, for the named recipient only · Pricing valid 30 days · We'd be delighted to walk you through the prototype in person.</p>
+  </section>
+  </div>
+  <div class="foot"><span>Atelier · Luxury Wardrobe Application</span><span>Confidential · Page 10</span></div>
+</div>
+
+</body>
+</html>

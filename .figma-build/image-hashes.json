@@ -1,0 +1,18 @@
+{
+  "coat": {"hash": "549a8134edb064ff2fb459ae0d4fdfba1d6b37bc", "node": "6:2"},
+  "trench": {"hash": "3b1ee57241a4716990d73fd77ba77782e8bf17b2", "node": "7:2"},
+  "knit": {"hash": "06bf92093572de83f2876b699a0ae001abb57865", "node": "8:2"},
+  "blouse": {"hash": "afdb299e535cfc10dd86b0606f38c022e47e1ef8", "node": "9:2"},
+  "dress": {"hash": "e78e7e79717262512d6a62874a5234b461125047", "node": "10:2"},
+  "silkdress": {"hash": "19691b38e7ba6a9769f66dcefa1d0f53f291378e", "node": "11:2"},
+  "trousers": {"hash": "e2d3baa43e44cb5f17b69005c1b6370a2fff2537", "node": "12:2"},
+  "blazer": {"hash": "9a93e433f416c9482586a2c5c3448d6b8c6f3308", "node": "13:2"},
+  "heels": {"hash": "ef6a5a595ad66a6a29aba536ae6432d98bdef594", "node": "14:2"},
+  "bag": {"hash": "344025b17b7a7d641268623f3880f888207ff06d", "node": "15:2"},
+  "scarf": {"hash": "18e6958bae9ea9ae2559dcc1f6d94a04a2527c5e", "node": "16:2"},
+  "sunglasses": {"hash": "82dd1264ed3f5e3e97b1ca7d9923bb9aaf41ecc7", "node": "17:2"},
+  "editorial1": {"hash": "c7ed8dee74acb931031a1f5dcc4766d8956470b5", "node": "18:2"},
+  "editorial2": {"hash": "c73a49db77544af3e02fc7595f5e2252233f769e", "node": "19:2"},
+  "model1": {"hash": "9988960653b935c3ba44b662e0d18af426006067", "node": "20:2"},
+  "knit2": {"hash": "7a0e8f8cfd044777cab21d16ef6e4b8ab894e12f", "node": "21:2"}
+}
